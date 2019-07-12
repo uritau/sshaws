@@ -4,8 +4,6 @@ import (
   "flag"
   "fmt"
   "log"
-  "os/exec"
-
   "os"
   "strconv"
 
@@ -86,15 +84,13 @@ func get_instances(region, env, app string) *ec2.DescribeInstancesOutput {
 }
 
 func launch_ssh(dest_ip string) {
+  args := []string{"172.31.80.65"}
   fmt.Printf("ssh %s \n", dest_ip)
-  cmd := exec.Command("ssh", dest_ip)
-  cmd.Stderr = os.Stderr
-  stdout, err := cmd.Output()
-  if err != nil {
-    println(err.Error())
-    return
-  }
-  print(string(stdout))
+  var procAttr os.ProcAttr
+  procAttr.Files = []*os.File{os.Stdin,
+    os.Stdout, os.Stderr}
+  os.StartProcess("/usr/bin/ssh", args, &procAttr)
+  
 }
 
 func select_instance() int{
