@@ -25,11 +25,11 @@ func filter_instances(region, env, app, name string) *ec2.DescribeInstancesOutpu
 			},
 			{
 				Name:   aws.String("tag:Name"),
-				Values: []*string{aws.String(name)},
+				Values: []*string{aws.String("*" + name + "*")},
 			},
 			{
 				Name:   aws.String("tag:Application"),
-				Values: []*string{aws.String(app)},
+				Values: []*string{aws.String(app + "*")},
 			}, {
 				Name:   aws.String("instance-state-name"),
 				Values: []*string{aws.String("running"), aws.String("pending")},
