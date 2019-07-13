@@ -1,0 +1,4 @@
+go get .
+go test
+go build *.go -o sshaws
+publish binary somewhere
