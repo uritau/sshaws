@@ -23,13 +23,21 @@ func show_instance_list(instance_list []instance) {
 	}
 }
 
+func define_filters() []instanceFilter {
+	var filterList []instanceFilter
+	filterList = append(filterList, *NewInstanceFilter("Name", "name", "n", "Instance Name", "*"))
+	filterList = append(filterList, *NewInstanceFilter("Application", "app", "a", "Tag Application of the instance", "*"))
+	filterList = append(filterList, *NewInstanceFilter("Environment", "env", "e", "Tag Environment of the instance", "*"))
+	return filterList
+}
+
 func main() {
+
+	filters := define_filters()
+
 	config := read_params()
 	region := config.Region
-	env := config.Env
-	app := config.App
-	name := config.Name
-	resp := filter_instances(region, env, app, name)
+	resp := filter_instances(filters, region)
 	instance_list := get_instances_info(resp)
 	show_instance_list(instance_list)
 	instance_number := select_instance_index(instance_list)

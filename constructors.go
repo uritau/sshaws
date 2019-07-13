@@ -24,10 +24,28 @@ type instance struct {
 }
 
 func NewInstance(name, ip, id, size string) *instance {
-	new_instance := new(instance)
-	new_instance.Name = name
-	new_instance.IP = ip
-	new_instance.ID = id
-	new_instance.Size = size
-	return new_instance
+	newInstance := new(instance)
+	newInstance.Name = name
+	newInstance.IP = ip
+	newInstance.ID = id
+	newInstance.Size = size
+	return newInstance
+}
+
+type instanceFilter struct {
+	Tag             string
+	Flag            string
+	FlagShort       string
+	FlagDescription string
+	DefaultValue    string
+}
+
+func NewInstanceFilter(tag, flag, flagShort, flagDescription, defaultValue string) *instanceFilter {
+	newInstanceFilter := new(instanceFilter)
+	newInstanceFilter.Tag = tag
+	newInstanceFilter.Flag = flag
+	newInstanceFilter.FlagShort = flagShort
+	newInstanceFilter.FlagDescription = flagDescription
+	newInstanceFilter.DefaultValue = defaultValue
+	return newInstanceFilter
 }
