@@ -16,6 +16,10 @@ func NewConfiguration(region, env, app, name string) *configuration {
 	return config
 }
 
+func ReturnConfiguration(current_config configuration) (string, string, string, string) {
+	return current_config.Env, current_config.App, current_config.Name, current_config.Region
+}
+
 type instance struct {
 	Name string
 	IP   string
