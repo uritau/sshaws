@@ -3,3 +3,12 @@ language: go
 script:
   - go get .
   - go build -o sshaws *.go
+
+deploy:
+    provider: releases
+    file:
+        - sshaws
+    skip_cleanup: true
+    on:
+        repo: uritau/sshaws
+        tags: true
