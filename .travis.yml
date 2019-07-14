@@ -1,7 +1,6 @@
 language: go
 
 script:
-  - golangci-lint run
   - go get .
   - go build -o sshaws *.go
 
