@@ -1,7 +1,7 @@
 language: go
 before_install:
 - openssl aes-256-cbc -K $encrypted_44ae6c1bec7a_key -iv $encrypted_44ae6c1bec7a_iv
-  -in github_deploy_key.enc -out travisci/github_deploy_key -d
+  -in travisci/github_deploy_key.enc -out travisci/github_deploy_key -d
 - chmod 600 travisci/github_deploy_key
 - eval $(ssh-agent -s)
 - ssh-add travisci/github_deploy_key
@@ -16,6 +16,7 @@ after_success:
 on:
   branch: master
   tags: false
+
 deploy:
   provider: releases
   api_key:
