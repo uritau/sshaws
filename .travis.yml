@@ -2,16 +2,27 @@ language: go
 before_deploy:
 - git config --local user.name "Travis Build"
 - git config --local user.email "builder@travis-ci.com"
+
 script:
 - go get .
 - go build -o sshaws *.go
+
+bump:
+  script:
+  - bash travisci/bump_version.sh
+  on:
+    repo: uritau/sshaws
+    branch: master
+    tags: false
+
 deploy:
   provider: releases
   api_key:
     secure: k0ajuxDLDO0yt32hygxt+o/lJn5SpQPpbZA5XXp2LhiZd5YSbiKmRPGlNdClT02N6Qlw8YmbdDjMY3ctYZiEoKdeSYDm6ACQKKwQ1gfoQc50peM53V4LAO0RATIWR9ZvP7WSa3DPdYR61SItLHPV8wi3KkdY8Yni9OytJYN6wNKBqryZBbBJlx1tqFK3Jm2COwhmjR/eIpTTmy7oYmWzlmueDgw5dmTulmLsJeard0cYH6asLt0AZ+m2i2IFDxSQmsjegJrbsFgasav12ycyAV3ejWl/NTAEl78sBCjCoHQwcV7NOfnB8esZu+60f98r9UHWGwFavwV7jLygs6jwwBmDaRcq3KWRuxT8gFqoUye18YpVSP5ve3k6+pH7geG9GYKGP2culIA6W6pHO2QxHwrIP14gf2yZyAbBKX+C3MbATy2tWUqyM6qWphAIGYKLZVW+SOQUG4e76M52EG7PjfdoH2K+v7KBQdUGPHLDptal/ra4yri7s7Vm2KTjADv3qR0p5Gyp0oETmqFmjNCNeTkW8y5P+gFZxRaZWXLyCQmQuLYj8zpp7zxX1CXoVMbdnzf+ra9XzmH1V6/91IuRIh/J5uBOeK9hb6Ca9h2pUxbCYWqSj95l6tVwq2smDpP1+WM2lZAkxjItAZ/8m9Ft1Jn+Efjf4skWEy3Cov9aJDY=
   file:
   - sshaws
-  skip_cleanup: true
   on:
     repo: uritau/sshaws
+    branch: master
     tags: true
+
