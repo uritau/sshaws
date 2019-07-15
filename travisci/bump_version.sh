@@ -11,8 +11,8 @@ git checkout master
 sed -i "s/version=\"$old_version\"/version=\"$new_version\"/g" $version_file
 git add .
 git commit -m "Bump version"
-git tag $NEW_TAG #&> /dev/null
-git push origin --tags  #&> /dev/null
+git tag $NEW_TAG &> /dev/null
+git push && git push --tags  &> /dev/null
 exit 0
 
 
