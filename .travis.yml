@@ -17,7 +17,7 @@ after_success:
 - go build -o sshaws *.go
 on:
   branch: master
-    tags: false
+  tags: false
 
 
 deploy:
