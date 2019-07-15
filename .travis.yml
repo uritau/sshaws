@@ -8,16 +8,16 @@ before_install:
 - git config --local user.name "Travis Build"
 - git config --local user.email "builder@travis-ci.com"
 
-before_script:
-- bash travisci/bump_version.sh
-on:
-  repo: uritau/sshaws
-  branch: master
-  tags: false
-
 script:
   - go get .
   - go build -o sshaws *.go
+
+after_success:
+- bash travisci/bump_version.sh
+- go build -o sshaws *.go
+on:
+  branch: master
+
 
 deploy:
   provider: releases
