@@ -1,14 +1,14 @@
 language: go
 before_deploy:
-      - git config --local user.name "YOUR GIT USER NAME"
-      - git config --local user.email "YOUR GIT USER EMAIL"
+- git config --local user.name "YOUR GIT USER NAME"
+- git config --local user.email "YOUR GIT USER EMAIL"
 script:
 - go get .
 - go build -o sshaws *.go
 deploy:
   provider: releases
   api_key:
-    secure: GctxAJx1Go1WMBwAVrHLr4uS0aG/lFCDUa1Fl461iW8VdvMGni2FeXgUXqFudHtyKUmkaZvw3H6cug6Yy8k2SPKEkxEitb+Q/rA4CgZ9wo+iNwBj+k2bDn+ucwl05GHXCduwWZbg7wKyEqP8Lz1VHkHhYR60dinct7YPKif2iseBYOz4o7P9+BcqpK0mDKHSgPIzgZqjakF+aiuve1ToC8IdF1B2y7XHWytv+7xpD39Q5MffL0N8pUm4tf9sWQjGRrAjwCk2QykRfh0FStvKj0AO2O1usFKA3oHTrW2pFXgQgZbkLJwRdLd5HzmV2EsI1LrUUCoaUuCwt1SV+XvSauyiJLx7Tt7VbnX2ifXa0kSB/MjxdNh4rpxAVfqOQqaRoJGif+ASi9Fzp08gDcESPQe19M3xwL5eyAJh2PIUdpjhSY1yR2KcNCLpZtaiEbtRspSX61Z+lhLS9yhnPoZgeT5KWcuKsBo2fQQkzVED3nWWFLG2T7m8SWMosKmI7uVTSIn2LwMvlWTgtYb0plnivQqVKxc+mYPOjBueSP5LG4v31lWIP0i5zkkeX+VLvf6yg+4lDxKjHHlTTwNDenAbq3s5MQ4d4fGrYKDwax9MliFBC4cYtYoKt/wLnL2GhXVRpspXBLnu3iRqhc5zfq1t8261FxSfTrqON7CMwRqRuHM=
+    secure: k0ajuxDLDO0yt32hygxt+o/lJn5SpQPpbZA5XXp2LhiZd5YSbiKmRPGlNdClT02N6Qlw8YmbdDjMY3ctYZiEoKdeSYDm6ACQKKwQ1gfoQc50peM53V4LAO0RATIWR9ZvP7WSa3DPdYR61SItLHPV8wi3KkdY8Yni9OytJYN6wNKBqryZBbBJlx1tqFK3Jm2COwhmjR/eIpTTmy7oYmWzlmueDgw5dmTulmLsJeard0cYH6asLt0AZ+m2i2IFDxSQmsjegJrbsFgasav12ycyAV3ejWl/NTAEl78sBCjCoHQwcV7NOfnB8esZu+60f98r9UHWGwFavwV7jLygs6jwwBmDaRcq3KWRuxT8gFqoUye18YpVSP5ve3k6+pH7geG9GYKGP2culIA6W6pHO2QxHwrIP14gf2yZyAbBKX+C3MbATy2tWUqyM6qWphAIGYKLZVW+SOQUG4e76M52EG7PjfdoH2K+v7KBQdUGPHLDptal/ra4yri7s7Vm2KTjADv3qR0p5Gyp0oETmqFmjNCNeTkW8y5P+gFZxRaZWXLyCQmQuLYj8zpp7zxX1CXoVMbdnzf+ra9XzmH1V6/91IuRIh/J5uBOeK9hb6Ca9h2pUxbCYWqSj95l6tVwq2smDpP1+WM2lZAkxjItAZ/8m9Ft1Jn+Efjf4skWEy3Cov9aJDY=
   file:
   - sshaws
   skip_cleanup: true
