@@ -10,8 +10,9 @@ echo "New version is $new_version"
 sed -i "s/version=\"$old_version\"/version=\"$new_version\"/g" $version_file
 git add .
 git commit -m "Bump version"
-git tag $NEW_TAG &> /dev/null
-git push origin --tags &> /dev/null
+git tag $NEW_TAG #&> /dev/null
+git push origin --tags  #&> /dev/null
+exit 0
 
 
 
