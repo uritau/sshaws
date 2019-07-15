@@ -26,5 +26,5 @@ deploy:
   file:
   - sshaws
   on:
-    repo: uritau/sshaws
-    tags: true
+    branch: master
+
