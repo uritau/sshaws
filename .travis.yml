@@ -25,4 +25,4 @@ deploy:
   - sshaws
   on:
     branch: master
-    tags: false
+    sender: "Travis Build"
