@@ -13,9 +13,7 @@ script:
 after_success:
 - bash travisci/bump_version.sh
 - go build -o sshaws *.go
-if: |
-  branch = master \
-  sender != "builder@travis-ci.com"
+if: branch = master AND sender != "builder@travis-ci.com"
 
 deploy:
   provider: releases
