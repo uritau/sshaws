@@ -1,25 +1,19 @@
 language: go
-before_install:
-- openssl aes-256-cbc -K $encrypted_44ae6c1bec7a_key -iv $encrypted_44ae6c1bec7a_iv
-  -in travisci/github_deploy_key.enc -out travisci/github_deploy_key -d
-- chmod 600 travisci/github_deploy_key
-- eval $(ssh-agent -s)
-- ssh-add travisci/github_deploy_key
-- git config --local user.name "Travis Build"
-- git config --local user.email "builder@travis-ci.com"
 script:
 - go get .
 - go build -o sshaws *.go
-after_success:
-- bash travisci/bump_version.sh
-- go build -o sshaws *.go
-if: branch = master AND sender != "builder@travis-ci.com"
 
+before_deploy:
+  - git config --local user.name "Travis Build"
+  - git config --local user.email "builder@travis-ci.com"
+  - export TRAVIS_TAG=${bash travisci/show_version.sh}
+  - git tag $TRAVIS_TAG
 deploy:
   provider: releases
   api_key:
     secure: k0ajuxDLDO0yt32hygxt+o/lJn5SpQPpbZA5XXp2LhiZd5YSbiKmRPGlNdClT02N6Qlw8YmbdDjMY3ctYZiEoKdeSYDm6ACQKKwQ1gfoQc50peM53V4LAO0RATIWR9ZvP7WSa3DPdYR61SItLHPV8wi3KkdY8Yni9OytJYN6wNKBqryZBbBJlx1tqFK3Jm2COwhmjR/eIpTTmy7oYmWzlmueDgw5dmTulmLsJeard0cYH6asLt0AZ+m2i2IFDxSQmsjegJrbsFgasav12ycyAV3ejWl/NTAEl78sBCjCoHQwcV7NOfnB8esZu+60f98r9UHWGwFavwV7jLygs6jwwBmDaRcq3KWRuxT8gFqoUye18YpVSP5ve3k6+pH7geG9GYKGP2culIA6W6pHO2QxHwrIP14gf2yZyAbBKX+C3MbATy2tWUqyM6qWphAIGYKLZVW+SOQUG4e76M52EG7PjfdoH2K+v7KBQdUGPHLDptal/ra4yri7s7Vm2KTjADv3qR0p5Gyp0oETmqFmjNCNeTkW8y5P+gFZxRaZWXLyCQmQuLYj8zpp7zxX1CXoVMbdnzf+ra9XzmH1V6/91IuRIh/J5uBOeK9hb6Ca9h2pUxbCYWqSj95l6tVwq2smDpP1+WM2lZAkxjItAZ/8m9Ft1Jn+Efjf4skWEy3Cov9aJDY=
   file:
   - sshaws
+  skip_cleanup: true
   on:
-    sender: "builder@travis-ci.com"
+    branch: master
