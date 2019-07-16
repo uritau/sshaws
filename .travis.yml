@@ -6,7 +6,7 @@ script:
 before_deploy:
   - git config --local user.name "Travis Build"
   - git config --local user.email "builder@travis-ci.com"
-  - export TRAVIS_TAG=${bash travisci/show_version.sh}
+  - export TRAVIS_TAG=$(bash travisci/show_version.sh)
   - git tag $TRAVIS_TAG
 deploy:
   provider: releases
