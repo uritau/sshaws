@@ -2,6 +2,6 @@ package main
 
 func get_version() string{
 	var version string
-	version="v1.2.10"
+	version="v1.2.11"
 	return version
 }
