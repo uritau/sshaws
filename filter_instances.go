@@ -11,7 +11,7 @@ import (
 
 func filter_instances(region, env, app, name string) *ec2.DescribeInstancesOutput {
 
-	fmt.Printf("Application: %s   Environment: %s   Name: %s   Region: %s\n", app, env, name, region)
+	fmt.Printf("\nApplication: %s   Environment: %s   Name: %s   Region: %s\n", app, env, name, region)
 	fmt.Printf("---------------------------------------------------------\n\n")
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String(region)},
