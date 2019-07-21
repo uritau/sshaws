@@ -1,9 +1,8 @@
 # SSHAWS
 
-`sshaws` is a helper to simplify the AWS instances dynamic ssh access.
+`sshaws` is a helper to simplify the *AWS instances ssh access*.
 
 > It will show a list of instances depending on some specified tags and help you to ssh on it.
-Even being a go project it will use your ssh configuration files (so if you need to specify some key or username do it in there).
 
 ## Getting Started
 
@@ -23,32 +22,48 @@ sshaws
         AWS Region (default "eu-west-1")
   --version | -v
         Show sshaws version
+  --help | -h
+        Show this text
 ```
 
 ### Prerequisites
 
-You will need ssh, and, if necessary, configure the ssh connection.
-If you want to compile and build by yourself you will need go up and running.
+ * **AWS CLI**: You need to have your ~/.aws/credentials in place and with the correct keys.
+* **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
+* **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
 
 ### Installing
 
-After downloading this repository, install golang required packages:
+#### From binary
 
-```
-go get .
-```
+```bash
+# Download latest version from https://github.com/uritau/sshaws/releases/latest
+wget https://github.com/uritau/sshaws/releases/latest/download/sshaws
 
-Build the binary
+# Give it execution permissions
+chmod 777 sshaws
 
-```
-go build *.go
-```
-
-You can move it to somehwere in order to be able to use it from any point of the system.
-
-```
+# Move to a desired folder
 sudo mv sshaws /usr/local/bin/sshaws
 ```
+
+#### From source code
+After downloading this repository:
+
+```bash
+# Enter repository folder
+cd sshaws
+
+# Install golang required packages:
+go get .
+
+# Build the binary
+go build -o sshaws *.go
+
+# Move to a desired folder
+sudo mv sshaws /usr/local/bin/sshaws
+```
+
 
 ## Running the tests
 
@@ -60,17 +75,17 @@ TO DO (No test available at this point)
 
 ## Contributing
 
-Please create a fork and create a PR! It will be awesome to have new proposals!
+Please create a fork and create a PR!
+It would be awesome to have new proposals!
 
 ## Versioning
 
-TO BE DEFINED
+Travis is configured to automatically build and update the version. (You can change the current version on [version.go](version.go)).
 
 ## Authors
 
-* **Oriol Tauleria** - [uritau](https://github.com/uritau)
+* [uritau](https://github.com/uritau), formerly [Oriol Tauleria](mailto:oriol.tauleria@gmail.com)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
