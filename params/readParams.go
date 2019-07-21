@@ -1,10 +1,14 @@
-package main
+package params
 
-import "flag"
-import "fmt"
-import "os"
+import (
+	"flag"
+	"fmt"
+	"os"
+	"sshaws/helpers"
+	"sshaws/version"
+)
 
-func readParams() configuration {
+func Read() helpers.Configuration {
 	const (
 		defaultApp    = "*"
 		usageApp      = "Tag Application of the instance"
@@ -32,13 +36,12 @@ func readParams() configuration {
 	flag.BoolVar(&displayVersion, "v", false, "Display app version")
 	flag.Parse()
 	if displayVersion {
-		fmt.Printf("sshaws version %s \n", get_version())
-		fmt.Printf("Original repository: https://github.com/uritau/sshaws/\n")
+		fmt.Printf("sshaws version %s \n", version.Get())
 		os.Exit(0)
 	}
 
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *NewConfiguration(region, env, app, name)
+	return *helpers.NewConfiguration(region, env, app, name)
 }

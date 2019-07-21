@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+	"sshaws/helpers"
+)
 
-func showInstanceList(instanceList []instance) {
+func showInstanceList(instanceList []helpers.Instance) {
 	if len(instanceList) == 0 {
 		fmt.Printf("There are no instances matching your request.\n")
 		os.Exit(0)

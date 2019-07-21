@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"sshaws/helpers"
 	"strconv"
 )
 
-func selectInstanceIndex(instance_list []instance) int {
+func selectInstanceIndex(instance_list []helpers.Instance) int {
 	var input string
 	fmt.Println("\nWhich one do you want to shh in?")
 	fmt.Scanln(&input)
