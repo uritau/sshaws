@@ -8,7 +8,15 @@ import (
 	"sshaws/version"
 )
 
-func Read() helpers.Configuration {
+var (
+	app            string
+	env            string
+	name           string
+	region         string
+	displayVersion bool
+)
+
+func init() {
 	const (
 		defaultApp    = "*"
 		usageApp      = "Tag Application of the instance"
@@ -19,11 +27,6 @@ func Read() helpers.Configuration {
 		defaultRegion = "eu-west-1"
 		usageRegion   = "AWS Region"
 	)
-	var app string
-	var env string
-	var name string
-	var region string
-	var displayVersion bool
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
 	flag.StringVar(&env, "env", defaultEnv, usageEnv)
@@ -34,6 +37,9 @@ func Read() helpers.Configuration {
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
 	flag.BoolVar(&displayVersion, "v", false, "Display app version")
+}
+
+func Read() helpers.Configuration {
 	flag.Parse()
 	if displayVersion {
 		fmt.Printf("sshaws version %s \n", version.Get())
