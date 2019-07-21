@@ -64,7 +64,10 @@ sudo mv sshaws /usr/local/bin/sshaws
 
 ## Running the tests
 
-TO DO (No test available at this point)
+```bash
+# Run the test recursively
+go test ./...
+```
 
 ## Built With
 
