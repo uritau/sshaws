@@ -4,7 +4,7 @@ import "flag"
 import "fmt"
 import "os"
 
-func read_params() configuration {
+func readParams() configuration {
 	const (
 		defaultApp    = "*"
 		usageApp      = "Tag Application of the instance"
