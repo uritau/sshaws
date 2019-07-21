@@ -3,17 +3,17 @@ package main
 import "fmt"
 import "os"
 
-func show_instance_list(instance_list []instance) {
-	if len(instance_list) == 0 {
+func showInstanceList(instanceList []instance) {
+	if len(instanceList) == 0 {
 		fmt.Printf("There are no instances matching your request.\n")
 		os.Exit(0)
 	}
-	for idx, inst := range instance_list {
+	for idx, inst := range instanceList {
 		fmt.Printf("[%d] %s - %s (%s, %s) \n", idx, inst.Name, inst.IP, inst.ID, inst.Size)
 	}
-	if len(instance_list) == 1 {
+	if len(instanceList) == 1 {
 		fmt.Printf("\n\n")
-		launch_ssh(instance_list[0].IP)
+		launchSsh(instanceList[0].IP)
 		os.Exit(0)
 	}
 }
