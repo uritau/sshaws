@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func launch_ssh(dest_ip string) {
+func launchSsh(dest_ip string) {
 	pa := os.ProcAttr{
 		Files: []*os.File{os.Stdin, os.Stdout, os.Stderr},
 	}

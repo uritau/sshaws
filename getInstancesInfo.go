@@ -2,8 +2,8 @@ package main
 
 import "github.com/aws/aws-sdk-go/service/ec2"
 
-func get_instances_info(describeInstancesOutput *ec2.DescribeInstancesOutput) []instance {
-	var instance_list []instance
+func getInstancesInfo(describeInstancesOutput *ec2.DescribeInstancesOutput) []instance {
+	var instanceList []instance
 	for idx, _ := range describeInstancesOutput.Reservations {
 		for _, inst := range describeInstancesOutput.Reservations[idx].Instances {
 			name := ""
@@ -12,9 +12,9 @@ func get_instances_info(describeInstancesOutput *ec2.DescribeInstancesOutput) []
 					name = *tag.Value
 				}
 			}
-			new_instance := NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType)
-			instance_list = append(instance_list, *new_instance)
+			newInstance := NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType)
+			instanceList = append(instanceList, *newInstance)
 		}
 	}
-	return instance_list
+	return instanceList
 }
