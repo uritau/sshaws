@@ -33,6 +33,7 @@ func read_params() configuration {
 	flag.Parse()
 	if displayVersion {
 		fmt.Printf("sshaws version %s \n", get_version())
+		fmt.Printf("Original repository: https://github.com/uritau/sshaws/\n")
 		os.Exit(0)
 	}
 
