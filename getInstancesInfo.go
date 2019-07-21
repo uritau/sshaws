@@ -1,9 +1,13 @@
 package main
 
-import "github.com/aws/aws-sdk-go/service/ec2"
+import (
+	"sshaws/helpers"
 
-func getInstancesInfo(describeInstancesOutput *ec2.DescribeInstancesOutput) []instance {
-	var instanceList []instance
+	"github.com/aws/aws-sdk-go/service/ec2"
+)
+
+func getInstancesInfo(describeInstancesOutput *ec2.DescribeInstancesOutput) []helpers.Instance {
+	var instanceList []helpers.Instance
 	for idx, _ := range describeInstancesOutput.Reservations {
 		for _, inst := range describeInstancesOutput.Reservations[idx].Instances {
 			name := ""
@@ -12,7 +16,7 @@ func getInstancesInfo(describeInstancesOutput *ec2.DescribeInstancesOutput) []in
 					name = *tag.Value
 				}
 			}
-			newInstance := NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType)
+			newInstance := helpers.NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType)
 			instanceList = append(instanceList, *newInstance)
 		}
 	}
