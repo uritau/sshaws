@@ -14,6 +14,7 @@ var (
 	name           string
 	region         string
 	displayVersion bool
+	username       string
 )
 
 func init() {
@@ -26,6 +27,8 @@ func init() {
 		usageName     = "Instance Name"
 		defaultRegion = "eu-west-1"
 		usageRegion   = "AWS Region"
+		defaultUser   = ""
+		usageUser     = "SSH login name"
 	)
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
@@ -36,9 +39,10 @@ func init() {
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
-	flag.BoolVar(&displayVersion, "v", false, "Display app version")
+	flag.StringVar(&username, "l", defaultUser, usageUser)
 }
 
+//Read function
 func Read() helpers.Configuration {
 	flag.Parse()
 	if displayVersion {
@@ -49,5 +53,5 @@ func Read() helpers.Configuration {
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *helpers.NewConfiguration(region, env, app, name)
+	return *helpers.NewConfiguration(region, env, app, name, username)
 }
