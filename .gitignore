@@ -1,6 +1,7 @@
 # Binary file
 sshaws
+sshaws.mac
 
 
 # SSH Stuff
-travisci/github_deploy_key 
+travisci/github_deploy_key
