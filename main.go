@@ -1,16 +1,16 @@
 package main
 
 import (
-	"sshaws/helpers"
-	"sshaws/params"
+	"github.com/uritau/sshaws/helpers"
+	"github.com/uritau/sshaws/params"
 )
 
 func main() {
 	config := params.Read()
-	env, app, name, region := helpers.ReturnConfiguration(config)
+	env, app, name, region, user := helpers.ReturnConfiguration(config)
 	rawInstanceList := filterInstances(region, env, app, name)
 	instances := getInstancesInfo(rawInstanceList)
-	showInstanceList(instances)
+	showInstanceList(instances, user)
 	selectedInstance := selectInstanceIndex(instances)
-	launchSsh(instances[selectedInstance].IP)
+	launchSSH(instances[selectedInstance].IP, user)
 }

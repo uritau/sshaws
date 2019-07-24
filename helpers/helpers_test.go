@@ -1,14 +1,15 @@
 package helpers_test
 
 import (
-	"sshaws/helpers"
 	"testing"
+
+	"github.com/uritau/sshaws/helpers"
 )
 
 func TestConfiguration(t *testing.T) {
-	expRegion, expEnv, expApp, expName := "eu-west-1", "test_env", "test_app", "test_name"
-	newConfig := helpers.NewConfiguration("eu-west-1", "test_env", "test_app", "test_name")
-	retEnv, retApp, retName, retRegion := helpers.ReturnConfiguration(*newConfig)
+	expRegion, expEnv, expApp, expName, expUser := "eu-west-1", "test_env", "test_app", "test_name", "test_user"
+	newConfig := helpers.NewConfiguration("eu-west-1", "test_env", "test_app", "test_name", "test_user")
+	retEnv, retApp, retName, retRegion, retUser := helpers.ReturnConfiguration(*newConfig)
 
 	if retRegion != expRegion {
 		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retRegion, expRegion)
@@ -22,6 +23,8 @@ func TestConfiguration(t *testing.T) {
 	if retName != expName {
 		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retName, expName)
 	}
-
+	if retName != expName {
+		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retUser, expUser)
+	}
 }
 func TestNewInstance(t *testing.T) {}
