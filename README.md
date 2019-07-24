@@ -4,9 +4,103 @@
 
 > It will show a list of instances depending on some specified tags and help you to ssh on it.
 
-## Getting Started
 
-### Usage
+## Getting Started
+> Limitations: sshaws will only display instances with Environment and Application tags defined.
+
+```bash
+usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--region xx_yy_j] [-l user ][instance_name]
+```
+### Examples
+
+```bash
+# List all the instances from eu-west-1
+> sshaws
+
+Application: *   Environment: *   Name: *   Region: eu-west-1
+---------------------------------------------------------
+
+[0] front-prod-1 - 172.16.31.12 (i-0978df6a92b39d434, t2.nano)
+[1] front-prod-2 - 172.16.24.226 (i-0b3914e83516392378, t2.nano)
+[2] front-staging - 172.16.39.121 (i-0b3914e89237829ad1, t2.micro)
+[3] back-prod - 172.16.33.21 (i-0b3914421237829ad1, t3.large)
+[4] back-staging - 172.16.19.93 (i-0b391351e237829ad1, t3.micro)
+
+Which one do you want to shh in?
+# WAITING INPUT FROM USER
+3
+>> Starting a new ssh session to 172.16.33.21
+[...] Stablishing SSH connection with the desired server
+ ```
+
+```bash
+# List all the instances with front on name, from eu-west-1
+> sshaws front
+
+Application: *   Environment: *   Name: front   Region: eu-west-1
+---------------------------------------------------------
+
+[0] front-prod-1 - 172.16.31.12 (i-0978df6a92b39d434, t2.nano)
+[1] front-prod-2 - 172.16.24.226 (i-0b3914e83516392378, t2.nano)
+
+Which one do you want to shh in?
+# WAITING INPUT FROM USER
+0
+>> Starting a new ssh session to 172.16.31.12
+[...] Stablishing SSH connection with the desired server
+ ```
+
+```bash
+
+# List all the instances from eu-west-1 with TAG Environment=staging
+> sshaws -e staging
+
+Application: *   Environment: staging   Name: *   Region: eu-west-1
+---------------------------------------------------------
+
+[0] front-staging - 172.16.39.121 (i-0b3914e89237829ad1, t2.micro)
+[1] back-staging - 172.16.19.93 (i-0b391351e237829ad1, t3.micro)
+
+Which one do you want to shh in?
+# WAITING INPUT FROM USER
+1
+>> Starting a new ssh session to 172.16.19.93
+[...] Stablishing SSH connection with the desired server
+ ```
+
+```bash
+# List all the instances from eu-west-1 with TAG Environment=staging and back in the name
+> sshaws -e staging back
+
+Application: *   Environment: staging   Name: back   Region: eu-west-1
+---------------------------------------------------------
+
+[0] back-staging - 172.16.19.93 (i-0b391351e237829ad1, t3.micro)
+
+>> Starting a new ssh session to 172.31.2.93
+# If  there is only one instance, it will launch ssh automatically without waiting user input
+[...] Stablishing SSH connection with the desired server
+```
+
+```bash
+# List all the instances from eu-west-1 with TAG Environment=staging and launching ssh with user "test"
+> sshaws -e staging -l test
+
+Application: *   Environment: staging   Name: *   Region: eu-west-1
+---------------------------------------------------------
+
+[0] front-staging - 172.16.39.121 (i-0b3914e89237829ad1, t2.micro)
+[1] back-staging - 172.16.19.93 (i-0b391351e237829ad1, t3.micro)
+
+Which one do you want to shh in?
+# WAITING INPUT FROM USER
+0
+>> Starting a new ssh session to test@172.31.36.121
+[...] Stablishing SSH connection with the desired server
+ ```
+
+
+### Usage in depth
 
 Download the binary in this repository and execute it, or compile by yourself following the next steps.
 
