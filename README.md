@@ -38,13 +38,10 @@ sshaws
 
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
-wget https://github.com/uritau/sshaws/releases/latest/download/sshaws
+sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
 
 # Give it execution permissions
-chmod 777 sshaws
-
-# Move to a desired folder
-sudo mv sshaws /usr/local/bin/sshaws
+sudo chmod +x /usr/local/bin/sshaws
 ```
 
 #### From source code
