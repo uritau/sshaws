@@ -6,7 +6,7 @@ import (
 	"sshaws/helpers"
 )
 
-func showInstanceList(instanceList []helpers.Instance) {
+func showInstanceList(instanceList []helpers.Instance, user string) {
 	if len(instanceList) == 0 {
 		fmt.Printf("There are no instances matching your request.\n")
 		os.Exit(0)
@@ -16,7 +16,7 @@ func showInstanceList(instanceList []helpers.Instance) {
 	}
 	if len(instanceList) == 1 {
 		fmt.Printf("\n\n")
-		launchSsh(instanceList[0].IP)
+		launchSSH(instanceList[0].IP, user)
 		os.Exit(0)
 	}
 }

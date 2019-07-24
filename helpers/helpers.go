@@ -1,25 +1,31 @@
 package helpers
 
+// Configuration struct
 type Configuration struct {
 	App    string
 	Env    string
 	Region string
 	Name   string
+	User   string
 }
 
-func NewConfiguration(region, env, app, name string) *Configuration {
+//NewConfiguration returns one Configuration object
+func NewConfiguration(region, env, app, name, user string) *Configuration {
 	config := new(Configuration)
 	config.App = app
 	config.Env = env
 	config.Name = name
 	config.Region = region
+	config.User = user
 	return config
 }
 
-func ReturnConfiguration(current_config Configuration) (string, string, string, string) {
-	return current_config.Env, current_config.App, current_config.Name, current_config.Region
+//ReturnConfiguration returns a set of strings with current configuration
+func ReturnConfiguration(currentConfig Configuration) (string, string, string, string, string) {
+	return currentConfig.Env, currentConfig.App, currentConfig.Name, currentConfig.Region, currentConfig.User
 }
 
+//Instance struct
 type Instance struct {
 	Name string
 	IP   string
@@ -27,11 +33,12 @@ type Instance struct {
 	Size string
 }
 
+//NewInstance creator
 func NewInstance(name, ip, id, size string) *Instance {
-	new_instance := new(Instance)
-	new_instance.Name = name
-	new_instance.IP = ip
-	new_instance.ID = id
-	new_instance.Size = size
-	return new_instance
+	newInstance := new(Instance)
+	newInstance.Name = name
+	newInstance.IP = ip
+	newInstance.ID = id
+	newInstance.Size = size
+	return newInstance
 }
