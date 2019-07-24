@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"sshaws/helpers"
 	"strconv"
+
+	"github.com/uritau/sshaws/helpers"
 )
 
 func selectInstanceIndex(instance_list []helpers.Instance) int {
