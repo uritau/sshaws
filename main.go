@@ -1,8 +1,8 @@
 package main
 
 import (
-	"sshaws/helpers"
-	"sshaws/params"
+	"github.com/uritau/sshaws/helpers"
+	"github.com/uritau/sshaws/params"
 )
 
 func main() {

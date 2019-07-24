@@ -4,8 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"sshaws/helpers"
-	"sshaws/version"
+
+	"github.com/uritau/sshaws/helpers"
+	"github.com/uritau/sshaws/version"
 )
 
 var (
