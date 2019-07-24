@@ -18,6 +18,8 @@ sshaws
         Tag Environment of the instance (default "*")
   --name | -n
         Instance Name (default "*")
+  -l string
+        SSH login name (default "")
   --region
         AWS Region (default "eu-west-1")
   --version | -v
