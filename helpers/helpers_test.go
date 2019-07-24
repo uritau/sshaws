@@ -1,8 +1,9 @@
 package helpers_test
 
 import (
-	"sshaws/helpers"
 	"testing"
+
+	"github.com/uritau/sshaws/helpers"
 )
 
 func TestConfiguration(t *testing.T) {

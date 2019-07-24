@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
-	"sshaws/helpers"
+
+	"github.com/uritau/sshaws/helpers"
 )
 
 func showInstanceList(instanceList []helpers.Instance, user string) {

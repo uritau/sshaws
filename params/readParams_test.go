@@ -3,9 +3,10 @@ package params_test
 import (
 	"os"
 	"reflect"
-	"sshaws/helpers"
-	"sshaws/params"
 	"testing"
+
+	"github.com/uritau/sshaws/helpers"
+	"github.com/uritau/sshaws/params"
 )
 
 func TestValidateReadParamsEmpty(t *testing.T) {
