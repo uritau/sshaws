@@ -1,6 +1,7 @@
 language: go
 script:
 - go get .
+- go test ./... -v
 - go build -o sshaws *.go
 - GOOS=darwin GOARCH=amd64 go build -o sshaws.mac *.go
 
