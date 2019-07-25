@@ -9,7 +9,7 @@ import (
 
 func selectInstanceIndex(instance_list []helpers.Instance) int {
 	var input string
-	fmt.Println("\nWhich one do you want to shh in?")
+	fmt.Println("\nWhich one do you want to ssh in?")
 	fmt.Scanln(&input)
 	index, err := strconv.Atoi(input)
 	if err != nil || index > len(instance_list)-1 || index < 0 {
