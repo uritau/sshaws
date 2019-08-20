@@ -132,9 +132,20 @@ sshaws
 
 #### From binary
 
+##### For Linux
+
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
+
+# Give it execution permissions
+sudo chmod +x /usr/local/bin/sshaws
+```
+##### For MAC
+
+```bash
+# Download latest version from https://github.com/uritau/sshaws/releases/latest
+sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws.mac
 
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
