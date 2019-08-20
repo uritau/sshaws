@@ -9,10 +9,11 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
-func filterInstances(region, env, app, name string) *ec2.DescribeInstancesOutput {
-
-	fmt.Printf("\nApplication: %s   Environment: %s   Name: %s   Region: %s\n", app, env, name, region)
-	fmt.Printf("---------------------------------------------------------\n\n")
+func filterInstances(region, env, app, name string, silent bool) *ec2.DescribeInstancesOutput {
+	if !silent {
+		fmt.Printf("\nApplication: %s   Environment: %s   Name: %s   Region: %s\n", app, env, name, region)
+		fmt.Printf("---------------------------------------------------------\n\n")
+	}
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String(region)},
 	)
