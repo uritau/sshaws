@@ -16,6 +16,7 @@ var (
 	region         string
 	displayVersion bool
 	username       string
+	silent         bool
 )
 
 func init() {
@@ -30,14 +31,19 @@ func init() {
 		usageRegion   = "AWS Region"
 		defaultUser   = ""
 		usageUser     = "SSH login name"
+		defaultSilent = false
+		usageSilent   = "Show only IP"
+
 	)
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
 	flag.StringVar(&env, "env", defaultEnv, usageEnv)
 	flag.StringVar(&name, "name", defaultName, usageName)
+	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent+" [short mode]")
 	flag.StringVar(&app, "a", defaultApp, usageApp+" [short mode]")
 	flag.StringVar(&env, "e", defaultEnv, usageEnv+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
+	flag.BoolVar(&silent, "s", defaultSilent, usageSilent)
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
 	flag.StringVar(&username, "l", defaultUser, usageUser)
@@ -54,5 +60,5 @@ func Read() helpers.Configuration {
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *helpers.NewConfiguration(region, env, app, name, username)
+	return *helpers.NewConfiguration(region, env, app, name, username, silent)
 }

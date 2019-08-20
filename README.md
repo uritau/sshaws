@@ -9,7 +9,7 @@
 > Limitations: sshaws will only display instances with Environment and Application tags defined.
 
 ```bash
-usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--region xx_yy_j] [-l user ][instance_name]
+usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--silent true] [--region xx_yy_j] [-l user ][instance_name]
 ```
 ### Examples
 
@@ -116,6 +116,8 @@ sshaws
         SSH login name (default "")
   --region
         AWS Region (default "eu-west-1")
+  --silent | -s
+        Show only matching instances IPs
   --version | -v
         Show sshaws version
   --help | -h
@@ -132,9 +134,20 @@ sshaws
 
 #### From binary
 
+##### For Linux
+
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
+
+# Give it execution permissions
+sudo chmod +x /usr/local/bin/sshaws
+```
+##### For MAC
+
+```bash
+# Download latest version from https://github.com/uritau/sshaws/releases/latest
+sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws.mac
 
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
