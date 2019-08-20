@@ -7,10 +7,14 @@ import (
 
 func main() {
 	config := params.Read()
-	env, app, name, region, user := helpers.ReturnConfiguration(config)
-	rawInstanceList := filterInstances(region, env, app, name)
+	env, app, name, region, user, silent := helpers.ReturnConfiguration(config)
+	rawInstanceList := filterInstances(region, env, app, name, silent)
 	instances := getInstancesInfo(rawInstanceList)
-	showInstanceList(instances, user)
+	if silent {
+		showIPsList(instances)
+	} else {
+		showInstanceList(instances, user)
+	}
 	selectedInstance := selectInstanceIndex(instances)
 	launchSSH(instances[selectedInstance].IP, user)
 }
