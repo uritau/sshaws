@@ -16,6 +16,7 @@ var (
 	region         string
 	displayVersion bool
 	username       string
+	silent         bool
 )
 
 func init() {
@@ -38,7 +39,7 @@ func init() {
 	flag.StringVar(&app, "app", defaultApp, usageApp)
 	flag.StringVar(&env, "env", defaultEnv, usageEnv)
 	flag.StringVar(&name, "name", defaultName, usageName)
-	flag.StringVar(&silent, "silent", defaultSilent, usageSilent)
+	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent+" [short mode]")
 	flag.StringVar(&app, "a", defaultApp, usageApp+" [short mode]")
 	flag.StringVar(&env, "e", defaultEnv, usageEnv+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
@@ -59,5 +60,5 @@ func Read() helpers.Configuration {
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *helpers.NewConfiguration(region, env, app, name, username)
+	return *helpers.NewConfiguration(region, env, app, name, username, silent)
 }
