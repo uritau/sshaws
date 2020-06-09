@@ -30,14 +30,19 @@ func init() {
 		usageRegion   = "AWS Region"
 		defaultUser   = ""
 		usageUser     = "SSH login name"
+		defaultSilent = false
+		usageSilent   = "Show only IP"
+
 	)
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
 	flag.StringVar(&env, "env", defaultEnv, usageEnv)
 	flag.StringVar(&name, "name", defaultName, usageName)
+	flag.StringVar(&silent, "silent", defaultSilent, usageSilent)
 	flag.StringVar(&app, "a", defaultApp, usageApp+" [short mode]")
 	flag.StringVar(&env, "e", defaultEnv, usageEnv+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
+	flag.StringVar(&silent, "s", defaultSilent, usageSilent)
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
 	flag.StringVar(&username, "l", defaultUser, usageUser)
