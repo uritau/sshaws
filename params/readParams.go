@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/uritau/sshaws/helpers"
-	"github.com/uritau/sshaws/version"
+	"sshaws/helpers"
+	"sshaws/version"
 )
 
 var (
@@ -17,6 +17,7 @@ var (
 	displayVersion bool
 	username       string
 	silent         bool
+	ssh			   bool
 )
 
 func init() {
@@ -33,17 +34,19 @@ func init() {
 		usageUser     = "SSH login name"
 		defaultSilent = false
 		usageSilent   = "Show only IP"
+		defaultSSH = false
+		usageSSH   = "Use SSH instead of SSM"
 
 	)
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
 	flag.StringVar(&env, "env", defaultEnv, usageEnv)
 	flag.StringVar(&name, "name", defaultName, usageName)
-	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent+" [short mode]")
+	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent)
+	flag.BoolVar(&ssh, "ssh", defaultSSH, usageSSH+" [short mode]")
 	flag.StringVar(&app, "a", defaultApp, usageApp+" [short mode]")
 	flag.StringVar(&env, "e", defaultEnv, usageEnv+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
-	flag.BoolVar(&silent, "s", defaultSilent, usageSilent)
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
 	flag.StringVar(&username, "l", defaultUser, usageUser)
@@ -60,5 +63,5 @@ func Read() helpers.Configuration {
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *helpers.NewConfiguration(region, env, app, name, username, silent)
+	return *helpers.NewConfiguration(region, env, app, name, username, silent, ssh)
 }
