@@ -7,9 +7,9 @@ import (
 )
 
 func TestConfiguration(t *testing.T) {
-	expRegion, expEnv, expApp, expName, expUser, expSilent := "eu-west-1", "test_env", "test_app", "test_name", "test_user", false
-	newConfig := helpers.NewConfiguration("eu-west-1", "test_env", "test_app", "test_name", "test_user", false)
-	retEnv, retApp, retName, retRegion, retUser, retSilent := helpers.ReturnConfiguration(*newConfig)
+	expRegion, expEnv, expApp, expName, expUser, expSilent, expSSH := "eu-west-1", "test_env", "test_app", "test_name", "test_user", false, false
+	newConfig := helpers.NewConfiguration("eu-west-1", "test_env", "test_app", "test_name", "test_user", false, false)
+	retEnv, retApp, retName, retRegion, retUser, retSilent, retSSH := helpers.ReturnConfiguration(*newConfig)
 
 	if retRegion != expRegion {
 		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retRegion, expRegion)
@@ -28,6 +28,9 @@ func TestConfiguration(t *testing.T) {
 	}
 	if retSilent != expSilent {
 		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retSilent, expSilent)
+	}
+	if retSSH != expSSH {
+		t.Errorf("\nGot:\n %+v\nWant:\n %+v\n", retSSH, expSSH)
 	}
 }
 func TestNewInstance(t *testing.T) {}
