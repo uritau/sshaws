@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/uritau/sshaws/helpers"
+	"sshaws/helpers"
 )
 
 func selectInstanceIndex(instance_list []helpers.Instance) int {
