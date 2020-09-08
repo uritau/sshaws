@@ -1,8 +1,9 @@
 language: go
-env:
-- GO111MODULE=on
+
+go:
+- 1.15.x
+
 script:
-- go get .
 - go test ./... -v
 - go build -o sshaws *.go
 - GOOS=darwin GOARCH=amd64 go build -o sshaws.mac *.go
