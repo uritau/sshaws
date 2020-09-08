@@ -160,9 +160,6 @@ After downloading this repository:
 # Enter repository folder
 cd sshaws
 
-# Install golang required packages:
-go get .
-
 # Build the binary
 go build -o sshaws *.go
 
