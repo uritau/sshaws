@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/uritau/sshaws/helpers"
+	"sshaws/helpers"
 )
 
 func showIPsList(instanceList []helpers.Instance) {
@@ -12,7 +12,7 @@ func showIPsList(instanceList []helpers.Instance) {
 		os.Exit(0)
 	}
 	for _, inst := range instanceList {
-			fmt.Printf("%s\n", inst.IP)
+		fmt.Printf("%s\n", inst.IP)
 	}
 	os.Exit(0)
 }

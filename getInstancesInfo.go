@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/uritau/sshaws/helpers"
+	"sshaws/helpers"
 
 	"github.com/aws/aws-sdk-go/service/ec2"
 )

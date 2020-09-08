@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/uritau/sshaws/helpers"
+	"sshaws/helpers"
 )
 
 func showInstanceList(instanceList []helpers.Instance, user string) {
