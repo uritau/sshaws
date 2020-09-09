@@ -1,26 +1,26 @@
-package params
+package main
 
 import (
 	"flag"
 	"fmt"
 	"os"
 
-	"sshaws/helpers"
-	"sshaws/version"
+	cmd "sshaws/pkg/cmd"
+	auth "sshaws/pkg/cmd/login"
 )
 
-var (
-	app            string
-	env            string
-	name           string
-	region         string
-	displayVersion bool
-	username       string
-	silent         bool
-	ssh			   bool
-)
+func main() {
+	var (
+		app            string
+		env            string
+		name           string
+		region         string
+		displayVersion bool
+		username       string
+		silent         bool
+		ssh            bool
+	)
 
-func init() {
 	const (
 		defaultApp    = "*"
 		usageApp      = "Tag Application of the instance"
@@ -34,9 +34,8 @@ func init() {
 		usageUser     = "SSH login name"
 		defaultSilent = false
 		usageSilent   = "Show only IP"
-		defaultSSH = false
-		usageSSH   = "Use SSH instead of SSM"
-
+		defaultSSH    = false
+		usageSSH      = "Use SSH instead of SSM"
 	)
 
 	flag.StringVar(&app, "app", defaultApp, usageApp)
@@ -50,18 +49,17 @@ func init() {
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
 	flag.StringVar(&username, "l", defaultUser, usageUser)
-}
 
-//Read function
-func Read() helpers.Configuration {
 	flag.Parse()
+
 	if displayVersion {
-		fmt.Printf("sshaws version %s \n", version.Get())
+		fmt.Printf("sshaws version %s \n", cmd.Get())
 		os.Exit(0)
 	}
 
 	if flag.NArg() != 0 {
 		name = flag.Args()[0]
 	}
-	return *helpers.NewConfiguration(region, env, app, name, username, silent, ssh)
+
+	auth.NewLogin(env, app, name, region, username, silent, ssh)
 }

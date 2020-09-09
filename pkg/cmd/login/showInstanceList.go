@@ -1,13 +1,11 @@
-package main
+package login
 
 import (
 	"fmt"
 	"os"
-
-	"sshaws/helpers"
 )
 
-func showInstanceList(instanceList []helpers.Instance, user string) {
+func showInstanceList(instanceList []Instance, user string) {
 	if len(instanceList) == 0 {
 		fmt.Printf("There are no instances matching your request.\n")
 		os.Exit(0)

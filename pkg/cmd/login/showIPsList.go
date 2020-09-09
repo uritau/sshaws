@@ -1,13 +1,11 @@
-package main
+package login
 
 import (
 	"fmt"
 	"os"
-
-	"sshaws/helpers"
 )
 
-func showIPsList(instanceList []helpers.Instance) {
+func showIPsList(instanceList []Instance) {
 	if len(instanceList) == 0 {
 		os.Exit(0)
 	}

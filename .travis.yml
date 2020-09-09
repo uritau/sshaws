@@ -5,8 +5,8 @@ go:
 
 script:
 - go test ./... -v
-- go build -o sshaws *.go
-- GOOS=darwin GOARCH=amd64 go build -o sshaws.mac *.go
+- go build -o sshaws cmd/sshaws/main.go
+- GOOS=darwin GOARCH=amd64 go build -o sshaws.mac cmd/sshaws/main.go
 
 
 before_deploy:
