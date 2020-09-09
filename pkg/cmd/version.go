@@ -1,4 +1,4 @@
-package version
+package cmd
 
 func Get() string {
 	var version string
