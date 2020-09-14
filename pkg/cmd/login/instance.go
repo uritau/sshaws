@@ -8,7 +8,7 @@ type Instance struct {
 	Size string
 }
 
-//NewInstance creator
+//NewInstance initialize struct Instnace.
 func NewInstance(name, ip, id, size string) *Instance {
 	newInstance := new(Instance)
 	newInstance.Name = name
