@@ -1,4 +1,4 @@
-package main
+package login
 
 import (
 	"fmt"
@@ -40,12 +40,12 @@ func ignoreInterruptionSignal() {
 }
 
 func getAWSCLIpath() string {
-    cmd := exec.Command("which", "aws")
+	cmd := exec.Command("which", "aws")
 	path, err := cmd.CombinedOutput()
 	fmt.Printf(">>AWS CLI executable PATH %s\n", path)
 
-    if err != nil {
+	if err != nil {
 		fmt.Printf("aws cli executable not found by sshaws.\n Failed with %s\n", err)
-    }
-    return strings.TrimSuffix(string(path), "\n")
+	}
+	return strings.TrimSuffix(string(path), "\n")
 }

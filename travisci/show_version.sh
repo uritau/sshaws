@@ -1,6 +1,6 @@
 # !/usr/bin/env bash
 
-version_file="version/version.go"
+version_file="cmd/version.go"
 version=`grep "version=" $version_file | cut -d'=' -f 2`
 version=${version//\"}
 
