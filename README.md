@@ -161,7 +161,7 @@ After downloading this repository:
 cd sshaws
 
 # Build the binary
-go build -o sshaws *.go
+go build -o sshaws cmd/sshaws/main.go
 
 # Move to a desired folder
 sudo mv sshaws /usr/local/bin/sshaws
@@ -186,7 +186,7 @@ It would be awesome to have new proposals!
 
 ## Versioning
 
-Travis is configured to automatically build and update the version. (You can change the current version on [version.go](version.go)).
+Travis is configured to automatically build and update the version. (You can change the current version on [version.go](pkg/cmd/version.go)).
 
 ## Authors
 
