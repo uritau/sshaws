@@ -9,7 +9,7 @@
 > Limitations: sshaws will only display instances with Environment and Application tags defined.
 
 ```bash
-usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--silent true] [--region xx_yy_j] [-l user ][instance_name]
+usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--silent true] [--region xx_yy_j] [-l user ][instance_name] [-ssh options]
 ```
 ### Examples
 
@@ -118,6 +118,8 @@ sshaws
         AWS Region (default "eu-west-1")
   --silent | -s
         Show only matching instances IPs
+  --ssh true
+        By default the connection is with ssm, the option ssh true, allow you connect with it.
   --version | -v
         Show sshaws version
   --help | -h
