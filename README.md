@@ -7,12 +7,10 @@
 
 ## Getting Started
 > Limitations: sshaws will only display instances with Environment and Application tags defined.
-
 ```bash
 usage: sshaws [-e Environment_tag] [-n instance_name] [-a Application_tag] [--silent true] [--region xx_yy_j] [-l user ][instance_name]
 ```
 ### Examples
-
 ```bash
 # List all the instances from eu-west-1
 > sshaws
@@ -51,7 +49,6 @@ Which one do you want to ssh in?
  ```
 
 ```bash
-
 # List all the instances from eu-west-1 with TAG Environment=staging
 > sshaws -e staging
 
@@ -104,7 +101,7 @@ Which one do you want to ssh in?
 
 Download the binary in this repository and execute it, or compile by yourself following the next steps.
 
-```
+```bash
 sshaws
   --app | -a
         Tag Application of the instance (default "*")
@@ -124,18 +121,35 @@ sshaws
         Show this text
 ```
 
+### Diagram
+
+![The flow to connect EC2:](images/ssm-sessionmanager.png#center)
+
 ### Prerequisites
+There are some basic prerequisites :
 
- * **AWS CLI**: You need to have your ~/.aws/credentials in place and with the correct keys.
-* **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
-* **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
+- [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
+- Configure your **credentials** ~/.aws/ with the correct keys.
+    - ~/.aws/config
+        ```bash
+        [default]
+        region = eu-west-1
+        ```
+    - ~/.aws/credentials
+        ```bash
+        [default]
+        aws_access_key_id = AKIAXXXXXXXXXXXXX
+        aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ```
+- [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history)
+- **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
+- **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
 
-### Installing
+##### Installing
 
 #### From binary
 
-##### For Linux
-
+#### For Linux
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
@@ -143,8 +157,7 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
 ```
-##### For MAC
-
+#### For MAC
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws.mac
@@ -152,10 +165,8 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
 ```
-
 #### From source code
 After downloading this repository:
-
 ```bash
 # Enter repository folder
 cd sshaws
@@ -167,14 +178,11 @@ go build -o sshaws cmd/sshaws/main.go
 sudo mv sshaws /usr/local/bin/sshaws
 ```
 
-
 ## Running the tests
-
 ```bash
 # Run the test recursively
 go test ./...
 ```
-
 ## Built With
 
 * [Golang](https://golang.org/)
