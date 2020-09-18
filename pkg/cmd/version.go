@@ -2,5 +2,7 @@ package cmd
 
 // Get Returns the version of the library.
 func Get() string {
-	return "v1.2.7"
+	var version string
+	version = "v1.2.46"
+	return version
 }
