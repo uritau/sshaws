@@ -14,7 +14,7 @@ func getInstancesInfo(describeInstancesOutput *ec2.DescribeInstancesOutput) []In
 					name = *tag.Value
 				}
 			}
-			newInstance := NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType)
+			newInstance := NewInstance(name, *inst.PrivateIpAddress, *inst.InstanceId, *inst.InstanceType, *inst.Placement.AvailabilityZone)
 			instanceList = append(instanceList, *newInstance)
 		}
 	}

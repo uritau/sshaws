@@ -7,7 +7,7 @@ import (
 )
 
 // NewLogin login to the selected instance.
-func NewLogin(name string, region string, user string, silent bool, ssh bool) {
+func NewLogin(name string, region string, user string, silent bool, ssh bool, pushKey bool) {
 	rawInstanceList := filterInstances(region, name, silent, ssh)
 	instances := getInstancesInfo(rawInstanceList)
 
@@ -21,6 +21,8 @@ func NewLogin(name string, region string, user string, silent bool, ssh bool) {
 
 	if ssh {
 		launchSSH(instances[selectedInstance].IP, user)
+	} else if pushKey {
+		pushTempKeyPair(instances[selectedInstance].ID, instances[selectedInstance].AZ)
 	} else {
 		launchSSM(instances[selectedInstance].ID)
 	}

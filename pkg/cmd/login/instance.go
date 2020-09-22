@@ -6,14 +6,16 @@ type Instance struct {
 	IP   string
 	ID   string
 	Size string
+	AZ   string
 }
 
 //NewInstance initialize struct Instnace.
-func NewInstance(name, ip, id, size string) *Instance {
+func NewInstance(name, ip, id, size, az string) *Instance {
 	newInstance := new(Instance)
 	newInstance.Name = name
 	newInstance.IP = ip
 	newInstance.ID = id
 	newInstance.Size = size
+	newInstance.AZ = az
 	return newInstance
 }

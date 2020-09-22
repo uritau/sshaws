@@ -17,24 +17,28 @@ func main() {
 		username       string
 		silent         bool
 		ssh            bool
+		pushKey		   bool
 	)
 
 	const (
-		defaultName   = "*"
-		usageName     = "Instance Name"
-		defaultRegion = "eu-west-1"
-		usageRegion   = "AWS Region"
-		defaultUser   = ""
-		usageUser     = "SSH login name"
-		defaultSilent = false
-		usageSilent   = "Show only IP"
-		defaultSSH    = false
-		usageSSH      = "Use SSH instead of SSM"
+		defaultName   	= "*"
+		usageName     	= "Instance Name"
+		defaultRegion 	= "eu-west-1"
+		usageRegion   	= "AWS Region"
+		defaultUser   	= ""
+		usageUser     	= "SSH login name"
+		defaultSilent 	= false
+		usageSilent   	= "Show only IP"
+		defaultSSH    	= false
+		usageSSH      	= "Use SSH instead of SSM"
+		defaultPushKey 	= false
+		usagePushKey	= "Push temporal public key to instance"
 	)
 
 	flag.StringVar(&name, "name", defaultName, usageName)
 	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent)
 	flag.BoolVar(&ssh, "ssh", defaultSSH, usageSSH+" [short mode]")
+	flag.BoolVar(&pushKey, "k", defaultPushKey, usagePushKey+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
@@ -51,5 +55,5 @@ func main() {
 		name = flag.Args()[0]
 	}
 
-	auth.NewLogin(name, region, username, silent, ssh)
+	auth.NewLogin(name, region, username, silent, ssh, pushKey)
 }
