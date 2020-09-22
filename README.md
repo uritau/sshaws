@@ -7,7 +7,7 @@
 ## Getting Started
 
 ```bash
-usage: sshaws [-n instance_name] [--silent true] [--region xx_yy_j] [-l user ][instance_name] [-ssh options]
+usage: sshaws  [-n instance_name] [--silent true] [--region xx_yy_j] [-l user ] [-ssh true] [-k true] [instance_name]
 ```
 
 ### Examples
@@ -57,6 +57,8 @@ Download the binary in this repository and execute it, or compile by yourself fo
 sshaws
   --name | -n
         Instance Name (default "*")
+  --k true
+        Push a temporary private key to a desired instance
   -l string
         SSH login name (default "")
   --region
@@ -76,6 +78,8 @@ sshaws
 ![The flow to connect EC2:](images/ssm-sessionmanager.png#center)
 
 ### Prerequisites
+
+#### Client requirements
 There are some basic prerequisites :
 
 - [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
@@ -94,6 +98,9 @@ There are some basic prerequisites :
 - [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history)
 - **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
 - **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
+
+#### Server requirements
+* [OPTIONAL] `ec2-instance-connect`: If you want to copy the keys to the server, you will need to install `ec2-instance-connect` package in the server
 
 ##### Installing
 
