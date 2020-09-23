@@ -49,13 +49,14 @@ func showInstanceList(instanceList []Instance, user string) {
 func selectInstanceIndex(instanceList []Instance) int {
 	var input string
 	var index int
+	var err error
 	if len(instanceList) == 1 {
 		fmt.Printf("\n\n")
 		index = 0
 	} else {
 		fmt.Println("\nWhich one do you want to ssh in?")
 		fmt.Scanln(&input)
-		index, err := strconv.Atoi(input)
+		index, err = strconv.Atoi(input)
 		if err != nil || index > len(instanceList)-1 || index < 0 {
 			fmt.Println("Please enter a valid number.")
 			index = selectInstanceIndex(instanceList)
