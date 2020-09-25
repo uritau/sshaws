@@ -19,9 +19,16 @@ func pushTempKeyPair(destInstance, az string, IP string) {
 	tempPubKeyPath := fmt.Sprintf("%s.pub", tempKeyPath)
 	err := os.Remove(tempKeyPath)
 	err = os.Remove(tempPubKeyPath)
+	fmt.Println("Instance: ",destination)
 
 	fmt.Println(">> Generating temporal key pair")
-	proc, err := os.StartProcess(sshKeygenPath, []string{"ssh-keygen", "-t", "rsa", "-f", tempKeyPath, "-N", "", "-q"}, &pa)
+	proc, err := os.StartProcess(sshKeygenPath, []string{
+		"ssh-keygen",
+		"-t", "rsa",
+		"-f", tempKeyPath,
+		"-N", "",
+		"-q"},
+		&pa)
 	if err != nil {
 		panic(err)
 	}
@@ -31,7 +38,16 @@ func pushTempKeyPair(destInstance, az string, IP string) {
 	}
 
 	fmt.Println(">> Pushing temporal pub key to instance ", destination)
-	proc, err = os.StartProcess(awscliPath, []string{"aws", "ec2-instance-connect", "send-ssh-public-key", "--region", getRegionFromAZ(az), "--instance-id", destination, "--availability-zone", az, "--instance-os-user", "ubuntu", "--ssh-public-key", "file://" + tempPubKeyPath}, &pa)
+	proc, err = os.StartProcess(awscliPath, []string{
+		"aws",
+		"ec2-instance-connect",
+		"send-ssh-public-key",
+		"--region", getRegionFromAZ(az),
+		"--instance-id", destination,
+		"--availability-zone", az,
+		"--instance-os-user", "ubuntu",
+		"--ssh-public-key", "file://" + tempPubKeyPath},
+		&pa)
 	_, err = proc.Wait()
 	if err != nil {
 		panic(err)
