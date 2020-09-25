@@ -7,7 +7,7 @@
 ## Getting Started
 
 ```bash
-usage: sshaws  [-n instance_name] [--silent true] [--region xx_yy_j] [-l user ] [-ssh true] [-k true] [instance_name]
+usage: sshaws [--silent true] [--region xx_yy_j] [-l user ] [-ssh true] [-k true] [instance_name]
 ```
 
 ### Examples
@@ -30,7 +30,7 @@ Which one do you want to ssh in?
 3
 >> Starting a new ssh session to 172.16.33.21
 [...] Stablishing SSH connection with the desired server
- ```
+```
 
 ```bash
 # List all the instances with front on name, from eu-west-1
@@ -47,7 +47,7 @@ Which one do you want to ssh in?
 0
 >> Starting a new ssh session to 172.16.31.12
 [...] Stablishing SSH connection with the desired server
- ```
+```
 
 ### Usage in depth
 
@@ -80,33 +80,41 @@ sshaws
 ### Prerequisites
 
 #### Client requirements
+
 There are some basic prerequisites :
 
 - [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
 - Configure your **credentials** ~/.aws/ with the correct keys.
-    - ~/.aws/config
-        ```bash
-        [default]
-        region = eu-west-1
-        ```
-    - ~/.aws/credentials
-        ```bash
-        [default]
-        aws_access_key_id = AKIAXXXXXXXXXXXXX
-        aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        ```
-- [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history)
+
+- ~/.aws/config
+
+```bash
+[default]
+region = eu-west-1
+```
+
+- ~/.aws/credentials
+
+```bash
+[default]
+aws_access_key_id = AKIAXXXXXXXXXXXXX
+aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+- [OPTIONAL] [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history). If you want to connect using ssm.
 - **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
 - **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
 
 #### Server requirements
-* [OPTIONAL] `ec2-instance-connect`: If you want to copy the keys to the server, you will need to install `ec2-instance-connect` package in the server
+
+- [OPTIONAL] `ec2-instance-connect`: If you want to copy the keys to the server, you will need to install `ec2-instance-connect` package in the server
 
 ##### Installing
 
 #### From binary
 
 #### For Linux
+
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
@@ -114,7 +122,9 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
 ```
+
 #### For MAC
+
 ```bash
 # Download latest version from https://github.com/uritau/sshaws/releases/latest
 sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws.mac
@@ -122,8 +132,11 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
 ```
+
 #### From source code
+
 After downloading this repository:
+
 ```bash
 # Enter repository folder
 cd sshaws
@@ -136,13 +149,15 @@ sudo mv sshaws /usr/local/bin/sshaws
 ```
 
 ## Running the tests
+
 ```bash
 # Run the test recursively
 go test ./...
 ```
+
 ## Built With
 
-* [Golang](https://golang.org/)
+- [Golang](https://golang.org/)
 
 ## Contributing
 
@@ -155,7 +170,10 @@ Travis is configured to automatically build and update the version. (You can cha
 
 ## Authors
 
-* [uritau](https://github.com/uritau), formerly [Oriol Tauleria](mailto:oriol.tauleria@gmail.com)
+- [uritau](https://github.com/uritau), [Oriol Tauleria](mailto:oriol.tauleria@gmail.com)
+- [xaf](https://github.com/xafardero)
+- [jiba21](https://github.com/jiba21)
+- [viscat](https://github.com/viscat)
 
 ## License
 
