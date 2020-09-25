@@ -22,7 +22,7 @@ func NewLogin(name string, region string, user string, silent bool, ssh bool, pu
 	if ssh {
 		launchSSH(instances[selectedInstance].IP, user)
 	} else if pushKey {
-		pushTempKeyPair(instances[selectedInstance].ID, instances[selectedInstance].AZ)
+		pushTempKeyPair(instances[selectedInstance].ID, instances[selectedInstance].AZ, instances[selectedInstance].IP)
 	} else {
 		launchSSM(instances[selectedInstance].ID)
 	}

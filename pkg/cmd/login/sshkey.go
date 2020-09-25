@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func pushTempKeyPair(destInstance, az string) {
+func pushTempKeyPair(destInstance, az string, IP string) {
 	destination := destInstance
 	pa := os.ProcAttr{
 		Files: []*os.File{os.Stdin, os.Stdout, os.Stderr},
@@ -30,12 +30,17 @@ func pushTempKeyPair(destInstance, az string) {
 		panic(err)
 	}
 
-	fmt.Printf(">> Pushing temporal pub key to instance %s\\n", destination)
-	_, err = os.StartProcess(awscliPath, []string{"aws", "ec2-instance-connect", "send-ssh-public-key", "--region", getRegionFromAZ(az), "--instance-id", destination, "--availability-zone", az, "--instance-os-user", "ubuntu", "--ssh-public-key", "file://" + tempPubKeyPath}, &pa)
+	fmt.Println(">> Pushing temporal pub key to instance ", destination)
+	proc, err = os.StartProcess(awscliPath, []string{"aws", "ec2-instance-connect", "send-ssh-public-key", "--region", getRegionFromAZ(az), "--instance-id", destination, "--availability-zone", az, "--instance-os-user", "ubuntu", "--ssh-public-key", "file://" + tempPubKeyPath}, &pa)
+	_, err = proc.Wait()
 	if err != nil {
 		panic(err)
 	}
-
+	fmt.Println(">> Configure your SSH tunel with this parameters:")
+	fmt.Println(`
+		HOST/IP: `, IP,`
+		User: ubuntu
+		Autentication method: "Public key"
+		Private Key:`, tempKeyPath, `
+		`)
 }
-
-
