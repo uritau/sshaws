@@ -7,8 +7,8 @@ import (
 )
 
 // NewLogin login to the selected instance.
-func NewLogin(env string, app string, name string, region string, user string, silent bool, ssh bool) {
-	rawInstanceList := filterInstances(region, env, app, name, silent, ssh)
+func NewLogin(name string, region string, user string, silent bool, ssh bool) {
+	rawInstanceList := filterInstances(region, name, silent, ssh)
 	instances := getInstancesInfo(rawInstanceList)
 
 	if silent {

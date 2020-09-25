@@ -11,8 +11,6 @@ import (
 
 func main() {
 	var (
-		app            string
-		env            string
 		name           string
 		region         string
 		displayVersion bool
@@ -22,10 +20,6 @@ func main() {
 	)
 
 	const (
-		defaultApp    = "*"
-		usageApp      = "Tag Application of the instance"
-		defaultEnv    = "*"
-		usageEnv      = "Tag Environment of the instance"
 		defaultName   = "*"
 		usageName     = "Instance Name"
 		defaultRegion = "eu-west-1"
@@ -38,13 +32,9 @@ func main() {
 		usageSSH      = "Use SSH instead of SSM"
 	)
 
-	flag.StringVar(&app, "app", defaultApp, usageApp)
-	flag.StringVar(&env, "env", defaultEnv, usageEnv)
 	flag.StringVar(&name, "name", defaultName, usageName)
 	flag.BoolVar(&silent, "silent", defaultSilent, usageSilent)
 	flag.BoolVar(&ssh, "ssh", defaultSSH, usageSSH+" [short mode]")
-	flag.StringVar(&app, "a", defaultApp, usageApp+" [short mode]")
-	flag.StringVar(&env, "e", defaultEnv, usageEnv+" [short mode]")
 	flag.StringVar(&name, "n", defaultName, usageName+" [short mode]")
 	flag.StringVar(&region, "region", defaultRegion, usageRegion)
 	flag.BoolVar(&displayVersion, "version", false, "Display app version")
@@ -61,5 +51,5 @@ func main() {
 		name = flag.Args()[0]
 	}
 
-	auth.NewLogin(env, app, name, region, username, silent, ssh)
+	auth.NewLogin(name, region, username, silent, ssh)
 }

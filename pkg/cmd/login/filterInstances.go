@@ -9,9 +9,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
-func filterInstances(region, env, app, name string, silent bool, ssh bool) *ec2.DescribeInstancesOutput {
+func filterInstances(region, name string, silent bool, ssh bool) *ec2.DescribeInstancesOutput {
 	if !silent {
-		fmt.Printf("\nApplication: %s   Environment: %s   Name: %s   Region: %s\n", app, env, name, region)
+		fmt.Printf("\nName: %s   Region: %s\n", name, region)
 		fmt.Printf("---------------------------------------------------------\n\n")
 	}
 	sess, err := session.NewSession(&aws.Config{
@@ -21,17 +21,10 @@ func filterInstances(region, env, app, name string, silent bool, ssh bool) *ec2.
 	params := &ec2.DescribeInstancesInput{
 		Filters: []*ec2.Filter{
 			{
-				Name:   aws.String("tag:Environment"),
-				Values: []*string{aws.String(env)},
-			},
-			{
 				Name:   aws.String("tag:Name"),
 				Values: []*string{aws.String("*" + name + "*")},
 			},
 			{
-				Name:   aws.String("tag:Application"),
-				Values: []*string{aws.String(app + "*")},
-			}, {
 				Name:   aws.String("instance-state-name"),
 				Values: []*string{aws.String("running"), aws.String("pending")},
 			},
