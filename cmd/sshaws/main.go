@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	cmd "sshaws/pkg/cmd"
-	auth "sshaws/pkg/cmd/login"
+	cmd "github.com/uritau/sshaws/pkg/cmd"
+	auth "github.com/uritau/sshaws/pkg/cmd/login"
 )
 
 func main() {
