@@ -7,6 +7,7 @@ script:
 - go test ./... -v
 - go build -o sshaws cmd/sshaws/main.go
 - GOOS=darwin GOARCH=amd64 go build -o sshaws.mac cmd/sshaws/main.go
+- GOOS=windows GOARCH=amd64 go build -o sshaws.win cmd/sshaws/main.go
 
 deploy:
   provider: releases
@@ -15,6 +16,7 @@ deploy:
   file:
   - sshaws
   - sshaws.mac
+  - sshaws.win
   skip_cleanup: true
   on:
     tags: true
