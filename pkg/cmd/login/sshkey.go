@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func pushTempKeyPair(destInstance, az string, IP string) {
+func pushTempKeyPair(destInstance, az string, IP string, username string) {
 	destination := destInstance
 	pa := os.ProcAttr{
 		Files: []*os.File{os.Stdin, os.Stdout, os.Stderr},
@@ -45,7 +45,7 @@ func pushTempKeyPair(destInstance, az string, IP string) {
 		"--region", getRegionFromAZ(az),
 		"--instance-id", destination,
 		"--availability-zone", az,
-		"--instance-os-user", "ubuntu",
+		"--instance-os-user", username,
 		"--ssh-public-key", "file://" + tempPubKeyPath},
 		&pa)
 	_, err = proc.Wait()
@@ -55,7 +55,7 @@ func pushTempKeyPair(destInstance, az string, IP string) {
 	fmt.Println(">> Configure your SSH tunel with this parameters:")
 	fmt.Println(`
 		HOST/IP: `, IP,`
-		User: ubuntu
+		User: `, username,`
 		Autentication method: "Public key"
 		Private Key:`, tempKeyPath, `
 		`)

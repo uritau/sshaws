@@ -25,7 +25,7 @@ func main() {
 		usageName     	= "Instance Name"
 		defaultRegion 	= "eu-west-1"
 		usageRegion   	= "AWS Region"
-		defaultUser   	= ""
+		defaultUser   	= "ubuntu"
 		usageUser     	= "SSH login name"
 		defaultSilent 	= false
 		usageSilent   	= "Show only IP"
