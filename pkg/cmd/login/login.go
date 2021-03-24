@@ -43,8 +43,17 @@ func showInstanceList(instanceList []Instance, user string) {
 		fmt.Printf("There are no instances matching your request.\n")
 		os.Exit(0)
 	}
+
 	for idx, inst := range instanceList {
-		fmt.Printf("[%d] %s - %s (%s, %s) \n", idx, inst.Name, inst.IP, inst.ID, inst.Size)
+		fmt.Printf(
+			"[%d] %s - %s (%s, %s, %s) \n",
+			idx,
+			inst.Name,
+			inst.IP,
+			inst.ID,
+			inst.Size,
+			inst.LaunchTime.Format("2006-01-02 15:04:05"),
+		)
 	}
 }
 
