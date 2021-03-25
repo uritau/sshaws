@@ -4,3 +4,6 @@
 
 # SSH Stuff
 travisci/github_deploy_key
+
+# IntelliJ IDEA files and folders
+.idea
