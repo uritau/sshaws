@@ -85,7 +85,6 @@ There are some basic prerequisites :
 
 - [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
 - Configure your **credentials** ~/.aws/ with the correct keys.
-
 - ~/.aws/config
 
 ```bash
