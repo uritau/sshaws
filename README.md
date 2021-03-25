@@ -133,6 +133,13 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 sudo chmod +x /usr/local/bin/sshaws
 ```
 
+##### Note
+For MacOS you might also need the plugin [SessionManagerPlugin](https://formulae.brew.sh/cask/session-manager-plugin). 
+You can install it with `brew`:
+```bash
+brew install --cask session-manager-plugin
+```
+
 #### From source code
 
 After downloading this repository:
