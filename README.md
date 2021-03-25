@@ -84,31 +84,29 @@ sshaws
 There are some basic prerequisites :
 
 - [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
-- Configure your **credentials** ~/.aws/ with the correct keys.
-- ~/.aws/config
+- [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history). If you want to connect using ssm.
+- **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
+- **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
 
+Configure your **credentials** ~/.aws/ with the correct keys.
+- ~/.aws/config
 ```bash
 [default]
 region = eu-west-1
 ```
 
 - ~/.aws/credentials
-
 ```bash
 [default]
 aws_access_key_id = AKIAXXXXXXXXXXXXX
 aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-- [OPTIONAL] [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history). If you want to connect using ssm.
-- **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
-- **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
-
 #### Server requirements
 
 - [OPTIONAL] `ec2-instance-connect`: If you want to copy the keys to the server, you will need to install `ec2-instance-connect` package in the server
 
-##### Installing
+### Installing
 
 #### From binary
 
@@ -130,13 +128,6 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/lat
 
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
-```
-
-##### Note
-For macOS, you might also need the plugin [SessionManagerPlugin](https://formulae.brew.sh/cask/session-manager-plugin). 
-You can install it with `brew`:
-```bash
-brew install --cask session-manager-plugin
 ```
 
 #### From source code
