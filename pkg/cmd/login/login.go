@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/olekukonko/tablewriter"
 )
 
 // NewLogin login to the selected instance.
@@ -44,17 +46,30 @@ func showInstanceList(instanceList []Instance, user string) {
 		os.Exit(0)
 	}
 
+	tableData := [][]string{}
+
 	for idx, inst := range instanceList {
-		fmt.Printf(
-			"[%d] %s - %s (%s, %s, %s) \n",
-			idx,
+		dataInstance := []string{
+			strconv.Itoa(idx),
 			inst.Name,
 			inst.IP,
 			inst.ID,
 			inst.Size,
 			inst.LaunchTime.Format("2006-01-02 15:04:05"),
-		)
+		}
+		tableData = append(tableData, dataInstance)
 	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+
+	table.SetHeader([]string{"Id", "Name", "IP", "Instance Id", "Size", "LaunchTime"})
+	table.SetAutoWrapText(false)
+	table.SetHeaderLine(false)
+	table.SetBorder(false)
+	table.SetTablePadding("\t")
+	table.SetNoWhiteSpace(true)
+	table.AppendBulk(tableData)
+	table.Render()
 }
 
 func selectInstanceIndex(instanceList []Instance) int {
