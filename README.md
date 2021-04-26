@@ -19,11 +19,12 @@ usage: sshaws [--silent true] [--region xx_yy_j] [-l user ] [-ssh true] [-k true
 Name: *   Region: eu-west-1
 ---------------------------------------------------------
 
-[0] front-prod-1 - 172.16.31.12 (i-0978df6a92b39d434, t2.nano)
-[1] front-prod-2 - 172.16.24.226 (i-0b3914e83516392378, t2.nano)
-[2] front-staging - 172.16.39.121 (i-0b3914e89237829ad1, t2.micro)
-[3] back-prod - 172.16.33.21 (i-0b3914421237829ad1, t3.large)
-[4] back-staging - 172.16.19.93 (i-0b391351e237829ad1, t3.micro)
+ID           NAME                IP              INSTANCE ID            SIZE          LAUNCHTIME
+ 0      front-prod-1        172.16.31.12      i-0978df6a92b39d434      t2.nano    2020-12-18 08:08:08
+ 1      front-prod-2        172.16.24.226     i-0b3914e83516392378     t2.nano    2020-12-18 08:08:08
+ 2      front-staging       172.16.39.121     i-0b3914e89237829ad1     t2.micro   2020-12-18 08:08:08
+ 3      back-prod           172.16.33.21      i-0b3914421237829ad1     t3.large   2020-12-18 08:08:08
+ 4      back-staging        172.16.19.93      i-0b391351e237829ad1     t3.micro   2020-12-18 08:08:08
 
 Which one do you want to ssh in?
 # WAITING INPUT FROM USER
@@ -39,8 +40,10 @@ Which one do you want to ssh in?
 Name: front   Region: eu-west-1
 ---------------------------------------------------------
 
-[0] front-prod-1 - 172.16.31.12 (i-0978df6a92b39d434, t2.nano)
-[1] front-prod-2 - 172.16.24.226 (i-0b3914e83516392378, t2.nano)
+ID           NAME                IP              INSTANCE ID            SIZE          LAUNCHTIME
+ 0      front-prod-1        172.16.31.12      i-0978df6a92b39d434      t2.nano    2020-12-18 08:08:08
+ 1      front-prod-2        172.16.24.226     i-0b3914e83516392378     t2.nano    2020-12-18 08:08:08
+ 2      front-staging       172.16.39.121     i-0b3914e89237829ad1     t2.micro   2020-12-18 08:08:08
 
 Which one do you want to ssh in?
 # WAITING INPUT FROM USER
@@ -54,23 +57,23 @@ Which one do you want to ssh in?
 Download the binary in this repository and execute it, or compile by yourself following the next steps.
 
 ```bash
-sshaws
-  --name | -n
-        Instance Name (default "*")
-  --k true
-        Push a temporary private key to a desired instance
+sshaws --help
+Usage of sshaws:
+  -k	Push temporal public key to instance [short mode]
   -l string
-        SSH login name (default "")
-  --region
-        AWS Region (default "eu-west-1")
-  --silent | -s
-        Show only matching instances IPs
-  --ssh true
-        By default the connection is with ssm, the option ssh true, allow you connect with it.
-  --version | -v
-        Show sshaws version
-  --help | -h
-        Show this text
+    	SSH login name (default "ubuntu")
+  -n string
+    	Instance Name [short mode] (default "*")
+  -name string
+    	Instance Name (default "*")
+  -region string
+    	AWS Region (default "eu-west-1")
+  -silent
+    	Show only IP
+  -ssh
+    	Use SSH instead of SSM [short mode]
+  -version
+    	Display app version
 ```
 
 ### Diagram
