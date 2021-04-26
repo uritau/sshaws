@@ -66,7 +66,7 @@ func showInstanceList(instanceList []Instance, user string) {
 	table.SetAutoWrapText(false)
 	table.SetHeaderLine(false)
 	table.SetBorder(false)
-	table.SetTablePadding("\t")
+	table.SetTablePadding(" ")
 	table.SetNoWhiteSpace(true)
 	table.AppendBulk(tableData)
 	table.Render()
