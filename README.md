@@ -88,7 +88,7 @@ There are some basic prerequisites :
 
 - [**AWS CLI**](https://docs.aws.amazon.com/es_es/cli/latest/userguide/install-cliv2.html) tool
 - [**Session Manager Plugin**](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history). If you want to connect using ssm.
-- **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to awssh).
+- **SSH**: You will need ssh, and, if necessary, configure the ssh connection (The configuration in `~/.ssh/configuration` will be applied to sshaws).
 - **[OPTIONAL] Golang**: If you want to compile `sshaws` you will need the `golang` executable.
 
 Configure your **credentials** ~/.aws/ with the correct keys.
