@@ -4,3 +4,8 @@
 
 # SSH Stuff
 travisci/github_deploy_key
+
+# Tests
+test/terraform/.terraform
+test/terraform/.terraform.lock.hcl
+test/terraform/terraform.tfstate*
