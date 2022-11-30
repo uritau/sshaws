@@ -15,7 +15,7 @@ func pushTempKeyPair(destInstance, az string, IP string, username string) {
 	awscliPath := getCommandPath("aws")
 	sshKeygenPath := getCommandPath("ssh-keygen")
 
-	tempKeyPath := "/tmp/id_rsa_temp"
+	tempKeyPath := "/tmp/id_ed25519_temp"
 	tempPubKeyPath := fmt.Sprintf("%s.pub", tempKeyPath)
 	err := os.Remove(tempKeyPath)
 	err = os.Remove(tempPubKeyPath)
@@ -24,7 +24,7 @@ func pushTempKeyPair(destInstance, az string, IP string, username string) {
 	fmt.Println(">> Generating temporal key pair")
 	proc, err := os.StartProcess(sshKeygenPath, []string{
 		"ssh-keygen",
-		"-t", "rsa",
+		"-t", "ed25519",
 		"-f", tempKeyPath,
 		"-N", "",
 		"-q"},
