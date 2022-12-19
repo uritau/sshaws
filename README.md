@@ -116,8 +116,8 @@ aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #### For Linux
 
 ```bash
-# Download latest version from https://github.com/uritau/sshaws/releases/latest
-sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws
+# Download latest version from https://github.com/holaluz/sshaws/releases/latest
+sudo wget -O /usr/local/bin/sshaws https://github.com/holaluz/sshaws/releases/latest/download/sshaws
 
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
@@ -126,8 +126,8 @@ sudo chmod +x /usr/local/bin/sshaws
 #### For MAC
 
 ```bash
-# Download latest version from https://github.com/uritau/sshaws/releases/latest
-sudo wget -O /usr/local/bin/sshaws https://github.com/uritau/sshaws/releases/latest/download/sshaws.mac
+# Download latest version from https://github.com/holaluz/sshaws/releases/latest
+sudo wget -O /usr/local/bin/sshaws https://github.com/holaluz/sshaws/releases/latest/download/sshaws.mac
 
 # Give it execution permissions
 sudo chmod +x /usr/local/bin/sshaws
