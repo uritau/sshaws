@@ -48,7 +48,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Linux binary
-        id: upload-release-asset 
+        id: upload-release-asset-linux
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
           asset_name: sshaws
           asset_content_type: application/octet-stream
       - name: Upload OSX binary
-        id: upload-release-asset 
+        id: upload-release-asset-osx
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -68,7 +68,7 @@ jobs:
           asset_name: sshaws
           asset_content_type: application/octet-stream
       - name: Upload Windows binary
-        id: upload-release-asset 
+        id: upload-release-asset-win
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
