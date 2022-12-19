@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  NEW_RELEASE_VERSION: "v1.0.${{GITHUB_RUN_NUMBER}}"
+  NEW_RELEASE_VERSION: "v1.0.${{github.run_number}}"
 
 jobs:
   test:
