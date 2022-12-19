@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/olekukonko/tablewriter"
 )
+
+const subdomain string = "clidom.es"
 
 // NewLogin login to the selected instance.
 func NewLogin(name string, region string, user string, silent bool, ssh bool, pushKey bool) {
@@ -52,7 +55,7 @@ func showInstanceList(instanceList []Instance, user string) {
 		dataInstance := []string{
 			strconv.Itoa(idx),
 			inst.Name,
-			inst.DNS,
+			convertNameToDNS(inst.Name),
 			inst.IP,
 			inst.ID,
 			inst.Size,
@@ -90,4 +93,17 @@ func selectInstanceIndex(instanceList []Instance) int {
 		}
 	}
 	return index
+}
+
+func convertNameToDNS(name string) string {
+	if !strings.Contains(name, "bastion") {
+		return name
+	}
+	replaceBastion := strings.ReplaceAll(name, "bastion-", "bastion.")
+	replaceBastionV2 := strings.ReplaceAll(replaceBastion, "v2-", "")
+	replaceProd := strings.ReplaceAll(replaceBastionV2, "-prod", ".prod")
+	replaceStaging := strings.ReplaceAll(replaceProd, "-staging", ".staging")
+	dnsSplit := strings.Split(replaceStaging, ".")
+	dns := dnsSplit[1] + "." + dnsSplit[0] + "." + dnsSplit[2] + "." + subdomain
+	return dns
 }
