@@ -52,6 +52,7 @@ func showInstanceList(instanceList []Instance, user string) {
 		dataInstance := []string{
 			strconv.Itoa(idx),
 			inst.Name,
+			inst.DNS,
 			inst.IP,
 			inst.ID,
 			inst.Size,
@@ -62,7 +63,7 @@ func showInstanceList(instanceList []Instance, user string) {
 
 	table := tablewriter.NewWriter(os.Stdout)
 
-	table.SetHeader([]string{"Id", "Name", "IP", "Instance Id", "Size", "LaunchTime"})
+	table.SetHeader([]string{"Id", "Name", "DNS", "IP", "Instance Id", "Size", "LaunchTime"})
 	table.SetAutoWrapText(false)
 	table.SetHeaderLine(false)
 	table.SetBorder(false)
