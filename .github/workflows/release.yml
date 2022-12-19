@@ -1,0 +1,59 @@
+name: Release pipeline
+on: 
+  push:
+    tags:
+    - '*'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  NEW_RELEASE_VERSION: "v1.0.${{GITHUB_RUN_NUMBER}}"
+
+jobs:
+  test:
+    name: run CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '^1.15.1' # The Go version to download (if necessary) and use.
+      - name: Generate Linux binary
+        run: go build -o bin/sshaws cmd/sshaws/main.go
+      - name: Generate OSX binary
+        run: GOOS=darwin GOARCH=amd64 go build -o bin/sshaws.mac cmd/sshaws/main.go
+      - name: Generate Windows binary
+        run: GOOS=windows GOARCH=amd64 go build -o bin/sshaws.win cmd/sshaws/main.go
+      # - uses: actions/upload-artifact@v3
+      #   name: Upload binaries as artifacts
+      #   with:
+      #     name: upload-binary-artifacts
+      #     path: |
+      #       bin
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ NEW_RELEASE_VERSION}}
+          release_name: "Release ${{ NEW_RELEASE_VERSION }}"
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./bin/sshaws
+          asset_name: sshaws
+          asset_content_type: application/octet-stream
