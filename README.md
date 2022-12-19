@@ -111,7 +111,9 @@ aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### Installing
 
-#### From binary
+Currently the CI build on github generates the binary files for Linux, OSX and Windows.
+
+### From binary
 
 #### For Linux
 
@@ -133,7 +135,14 @@ sudo wget -O /usr/local/bin/sshaws https://github.com/holaluz/sshaws/releases/la
 sudo chmod +x /usr/local/bin/sshaws
 ```
 
-#### From source code
+#### For Windows
+
+Download the windows executable from https://github.com/holaluz/sshaws/releases/latest/download/sshaws.win
+
+Right click on the file, ensure it is not Locked and that it has execute permissions.
+
+
+### From source code
 
 After downloading this repository:
 
