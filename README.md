@@ -76,6 +76,22 @@ Usage of sshaws:
     	Display app version
 ```
 
+### Upgrade sshaws version
+
+To generate a new version of the sshaws tool, you can make your changes and add a new tag.
+
+Please follow the vX format (e.g. v1, v2, v3, etc).
+
+To add a tag and push it, you can execute
+
+```bash
+
+git tag vX && git push --tags
+
+```
+
+The download URLs for the binary will be the same, as they point to latest.
+
 ### Diagram
 
 ![The flow to connect EC2:](images/ssm-sessionmanager.png#center)
